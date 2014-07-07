@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app='mygameday'>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Gameday</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+  </head>
+  <body>
+      <h1>My Gameday</h1>
+
+      <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+      <div ng-view></div>
+<!--    <script>
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+--> <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+
+    <script src="app/games/games.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>
