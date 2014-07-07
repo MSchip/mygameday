@@ -1,5 +1,6 @@
 var gameday = require('gameday-fetch');
 var _ = require('underscore');
+var request = require('request');
 
 module.exports = {
 
@@ -48,7 +49,25 @@ module.exports = {
   },
 
   getGame: function(req, res, next){
-    
+    var gid = req.params.gid;
+
+    var zeros = function(num) {
+      num = num + '';
+      return num.length >= 2 ? num : '0' + num;
+    }
+
+    var dateMaker = function(date){
+      return 'year_'+date.getFullYear()+'/month_'+zeros(date.getMonth()+1)+'/day_'+zeros(date.getDate());
+    };
+    var url = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(new Date()) + '/' + gid + '/game_events.json';
+    console.log(url);
+
+    request.get(url, function(error, response, results) {
+      if(error){
+        console.log(error);
+      } 
+      res.send(results)
+    });
 
   }
 }
