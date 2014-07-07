@@ -45,5 +45,10 @@ module.exports = {
       });
       res.send(games);
     });
+  },
+
+  getGame: function(req, res, next){
+    
+
   }
 }

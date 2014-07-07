@@ -12,8 +12,20 @@ angular.module('mygameday.services', [])
     })
   }
 
+  var getGame = function(gid){
+    return $http({ 
+      method: 'GET',
+      url: '/games/' + gid
+    })
+    .then(function(response){
+      console.log(response.data)
+      return response.data;
+    })
+  }
+
   return{
-    getGames: getGames
+    getGames: getGames,
+    getGame: getGame
   };
 
 })
