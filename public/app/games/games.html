@@ -1,6 +1,5 @@
 <div id='container'>
-  <h2>{{ data }}</h2>
   <div class="game-section" ng-repeat="game in data.games">
-    <h4>{{ game }}</h4>
+    <h4>{{ game[0] }} at {{ game[1] }}</h4>
   </div>
 </div>

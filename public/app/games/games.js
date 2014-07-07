@@ -13,6 +13,5 @@ angular.module('mygameday.games', [])
     })
   };
 
-$scope.getGames();
-
-})
+  $scope.getGames();
+});

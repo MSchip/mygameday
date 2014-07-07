@@ -13,6 +13,7 @@
     "express": "~4.2.0",
     "gameday-fetch": "^0.1.0",
     "morgan": "~1.0.0",
-    "static-favicon": "~1.0.0"
+    "static-favicon": "~1.0.0",
+    "underscore": "^1.6.0"
   }
 }

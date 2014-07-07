@@ -1,6 +1,7 @@
 angular.module('mygameday.services', [])
 
 .factory('Games', function($http){
+
   var getGames = function(){
     return $http({
       method: 'GET',

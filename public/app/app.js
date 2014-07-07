@@ -6,7 +6,7 @@ angular.module('mygameday', [
 .config(function($routeProvider, $httpProvider){
   $routeProvider
     .when('/', {
-      template: 'app/games/games.html',
+      templateUrl: 'app/games/games.html',
       controller: 'GamesController'
     })
 })
