@@ -15,7 +15,7 @@
       <tr ng-repeat="batter in team.batter">
         <!-- <td>{{$parent.$index}}</td> -->
         <td>
-          {{ batter.name_display_first_last }}  {{batter.pos}}
+          {{batter.note}}{{ batter.name_display_first_last }}  {{batter.pos}}
         </td>
         <td>
           {{ batter.ab }}
@@ -71,6 +71,16 @@
           {{ team.avg }}
         </td>
       </tr>
+      <tr>
+        <td colspan="9" ng-if="team.note">
+          {{(team.note).slice(25, -16)}}
+        </td><br>
+      </tr>
+<!--       <tr>
+        <td colspan="9" ng-bind-html-unsafe>
+          {{ team.text_data }}
+        </td>
+      </tr> -->
     </table>
   </div>
     <div class="table-container" ng-hide="loading">

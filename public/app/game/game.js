@@ -1,10 +1,12 @@
 angular.module('mygameday.game', [])
 
-.controller('GameController', function($scope, $location, Games){
+.controller('GameController', function($scope, $location, Games, $rootScope){
   $scope.data = {};
   $scope.loading = false;
 
-  $scope.data.gid = ($location.path().slice(6))
+  $scope.data.gid = ($location.path().slice(6, 36))
+
+  $rootScope.gid = $scope.data.gid;
 
   $scope.changeView = function(gid){
     var url = '/game/'+gid+'/pitch';
@@ -13,6 +15,11 @@ angular.module('mygameday.game', [])
 
   $scope.changeBox = function(gid){
     var url = '/game/'+gid+'/box';
+    $location.path(url);
+  }
+
+  $scope.changePlay = function(gid){
+    var url = '/game/'+gid;
     $location.path(url);
   }
   
