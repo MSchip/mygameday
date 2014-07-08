@@ -59,14 +59,23 @@ module.exports = {
     var dateMaker = function(date){
       return 'year_'+date.getFullYear()+'/month_'+zeros(date.getMonth()+1)+'/day_'+zeros(date.getDate());
     };
-    var url = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(new Date()) + '/' + gid + '/game_events.json';
-    console.log(url);
+    var gameUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(new Date()) + '/' + gid + '/game_events.json';
+    var boxUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(new Date()) + '/' + gid + '/boxscore.json';
 
-    request.get(url, function(error, response, results) {
+    var box;
+
+    request.get(boxUrl, function(error, response, results) {
       if(error){
         console.log(error);
       } 
-      res.send(results)
+      box = results;
+    });
+
+    request.get(gameUrl, function(error, response, results) {
+      if(error){
+        console.log(error);
+      }
+      res.send([results, box]);
     });
 
   }

@@ -1,15 +1,45 @@
-<div id='container'>
-  <h2 ng-hide="loading">Plays by Inning<h2>
-  <h4 ng-show="loading">Loading, please wait.<h4>
-  <div ng-repeat="inning in data.events.data.game.inning">
-    <h2>{{ inning.num }}</h2>
-    <h4>Top</h4>
-    <ul ng-repeat="atbat in inning.top.atbat">
-      <li>{{ atbat.des }}</li>
-    </ul>
-    <h4>Bottom</h4>
-    <ul ng-repeat="atbat in inning.bottom.atbat">
-      <li>{{ atbat.des }}</li>
-    </ul>
+<div id='game-container'>
+  <h4 ng-show="loading">Loading, please wait.</h4>
+  
+  <div>
+    <h2 class="linescore-head" ng-hide="loading">Inning Linescore</h2>
+    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Pitch by Pitch</a></h2>
+  </div>
+  <br>
+
+  <div class="table-container">
+    <table class="inning-line-score table table-bordered col-md-8">
+      <tr>
+        <th ng-repeat="inning in linescore">
+          {{ inning.inning }}
+        </th>
+      </tr>
+      <tr>
+        <td ng-repeat="inning in linescore">
+          {{ inning.home }}
+        </td>
+      </tr>
+      <tr>
+        <td ng-repeat="inning in linescore">
+          {{ inning.away }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+
+  <h2 class="innings" ng-hide="loading">Plays by Inning</h2><br>
+  
+  <div class="play-by-play-container">
+    <div class="list-group" ng-repeat="inning in data.events.data.game.inning">
+      <h3 class="list-group-item-heading">Top {{ inning.num }}</h3>
+      <ul class="list-group-item-heading" ng-repeat="atbat in inning.top.atbat">
+        <li classs="list-group-item-text">{{ atbat.des }}</li>
+      </ul><br>
+      <h3 class="list-group-item-heading">Bottom {{ inning.num }}</h3>
+      <ul class="list-group-item-heading" ng-repeat="atbat in inning.bottom.atbat">
+        <li classs="list-group-item-text">{{ atbat.des }}</li>
+      </ul>
+    </div>
   </div>
 </div>

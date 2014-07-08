@@ -21,15 +21,5 @@ angular.module('mygameday.games', [])
     $location.path(url);
   }
 
-  // $scope.getGame = function(gid){
-  //   Games.getGame(gid)
-  //   .then(function(result){
-  //     console.log(result);
-  //   })
-  //   .catch(function(error){
-  //     console.log(error);
-  //   })
-  // }
-
   $scope.getGames();
 });

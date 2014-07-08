@@ -3,6 +3,57 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+/*a {
   color: #00B7FF;
+}*/
+
+.game-list {
+  width: 760px;
+  margin: 0 auto;
+  text-align: center;
 }
+
+ul {
+  list-style-type: none;
+}
+
+h3 {
+  text-align: center;
+}
+
+.title {
+  color: green;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#game-container {
+  width: 760px;
+  margin: 0 auto;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+.linescore-head {
+  float: left;
+}
+
+.pitch-link {
+  float: right;
+  text-align: right;
+  color: #428bca;
+  font-size: 20px;
+  vertical-align: text-bottom;
+}
+
+
+
