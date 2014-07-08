@@ -3,6 +3,141 @@
   <div>
     <h2 class="linescore-head" ng-hide="loading">Box Score</h2>
     <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Play by Play</a></h2>
-    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Pitch by Pitch</a></h2>
+    <h2 class="pitch-link" ng-hide="loading || data.status_ind == 'F'"><a ng-click="changeView(data.gid)">Pitch by Pitch</a></h2>
   </div>
+  <div class="table-container" ng-hide="loading">
+    <table class="inning-line-score table table-bordered col-md-8" ng-repeat="team in data.batters">
+      <tr>
+        <th ng-repeat="item in boxHead">
+          {{ item }}
+        </th>
+      </tr>
+      <tr ng-repeat="batter in team.batter">
+        <td>
+          {{ batter.name_display_first_last }}  {{batter.pos}}
+        </td>
+        <td>
+          {{ batter.ab }}
+        </td>
+        <td>
+          {{ batter.r }}
+        </td>
+        <td>
+          {{ batter.h }}
+        </td>
+        <td>
+          {{ batter.rbi }}
+        </td>
+        <td>
+          {{ batter.bb }}
+        </td>
+        <td>
+          {{ batter.so }}
+        </td>
+        <td>
+          {{ batter.lob }}
+        </td>
+        <td>
+          {{ batter.avg }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Totals
+        </td>
+        <td>
+          {{ team.ab }}
+        </td>
+        <td>
+          {{ team.r }}
+        </td>
+        <td>
+          {{ team.h }}
+        </td>
+        <td>
+          {{ team.rbi }}
+        </td>
+        <td>
+          {{ team.bb }}
+        </td>
+        <td>
+          {{ team.so }}
+        </td>
+        <td>
+          {{ team.lob }}
+        </td>
+        <td>
+          {{ team.avg }}
+        </td>
+      </tr>
+    </table>
+  </div>
+    <div class="table-container" ng-hide="loading">
+    <table class="inning-line-score table table-bordered col-md-8" ng-repeat="team in toBox.pitching">
+      <tr>
+        <th ng-repeat="item in boxHeadPitch">
+          {{ item }}
+        </th>
+      </tr>
+      <tr ng-repeat="pitcher in team.pitcher">
+        <td>
+          {{ pitcher.name_display_first_last }}
+        </td>
+        <td>
+          {{ pitcher.ip }}
+        </td>
+        <td>
+          {{ pitcher.h }}
+        </td>
+        <td>
+          {{ pitcher.r }}
+        </td>
+        <td>
+          {{ pitcher.er }}
+        </td>
+        <td>
+          {{ pitcher.bb }}
+        </td>
+        <td>
+          {{ pitcher.so }}
+        </td>
+        <td>
+          {{ pitcher.hr }}
+        </td>
+        <td>
+          {{ pitcher.era }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Totals
+        </td>
+        <td>
+          {{ team.ip }}
+        </td>
+        <td>
+          {{ team.h }}
+        </td>
+        <td>
+          {{ team.r }}
+        </td>
+        <td>
+          {{ team.er }}
+        </td>
+        <td>
+          {{ team.bb }}
+        </td>
+        <td>
+          {{ team.so }}
+        </td>
+        <td>
+          {{ team.hr }}
+        </td>
+        <td>
+          {{ team.era }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
 </div>
