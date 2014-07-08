@@ -6,4 +6,6 @@ module.exports = function(app){
 
   app.get('/:gid', gamesController.getGame);
 
+  app.get('/:gid/path', gamesController.getPlays);
+
 }

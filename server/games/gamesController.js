@@ -1,6 +1,7 @@
 var gameday = require('gameday-fetch');
 var _ = require('underscore');
 var request = require('request');
+var utils = require('../helpers/utils.js');
 
 module.exports = {
 
@@ -38,7 +39,7 @@ module.exports = {
       tormlb: 'Blue Jays',
       oakmlb: 'Athletics'
   }
-    gameday.getGameIds(new Date(), function(err, results){
+    gameday.getGameIds(utils.dater(), function(err, results){
       var games = _.map(results, function(id){
         var home = teamKey[id.slice(15,21)];
         var away = teamKey[id.slice(22,28)];
@@ -46,6 +47,29 @@ module.exports = {
       });
       res.send(games);
     });
+  },
+
+  getPlays: function(req, res, next){
+    var gid = req.params.gid;
+    console.log('params: ', req.params)
+
+    var zeros = function(num) {
+      num = num + '';
+      return num.length >= 2 ? num : '0' + num;
+    }
+
+    var dateMaker = function(date){
+      return 'year_'+date.getFullYear()+'/month_'+zeros(date.getMonth()+1)+'/day_'+zeros(date.getDate());
+    };
+    var playsUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(utils.dater()) + '/' + gid + '/plays.json';
+    console.log(playsUrl)
+    request.get(playsUrl, function(error, response, results) {
+      if(error){
+        console.log(error);
+      } 
+      res.send(results);
+    });
+
   },
 
   getGame: function(req, res, next){
@@ -59,8 +83,8 @@ module.exports = {
     var dateMaker = function(date){
       return 'year_'+date.getFullYear()+'/month_'+zeros(date.getMonth()+1)+'/day_'+zeros(date.getDate());
     };
-    var gameUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(new Date()) + '/' + gid + '/game_events.json';
-    var boxUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(new Date()) + '/' + gid + '/boxscore.json';
+    var gameUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(utils.dater()) + '/' + gid + '/game_events.json';
+    var boxUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(utils.dater()) + '/' + gid + '/boxscore.json';
 
     var box;
 

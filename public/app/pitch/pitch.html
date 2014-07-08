@@ -1,0 +1,8 @@
+<div id='game-container'>
+  <h4 ng-show="loading">Loading, please wait.</h4>
+  <div>
+    <h2 class="linescore-head" ng-hide="loading">Pitch by Pitch</h2>
+    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Play by Play</a></h2>
+    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Box Score</a></h2>
+  </div>
+</div>

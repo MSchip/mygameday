@@ -21,7 +21,9 @@ angular.module('mygameday.game', [])
       $scope.toBox = $scope.data.box.data.boxscore
       $scope.linescore = $scope.toBox.linescore.inning_line_score;
       $scope.linescore.unshift({"home": $scope.toBox.home_fname, "away":$scope.toBox.away_fname, "inning": ""})
-      $scope.linescore.push({"home": $scope.toBox.linescore.home_team_runs, "away":$scope.toBox.linescore.away_team_runs, "inning": ""})
+      $scope.linescore.push({"home": $scope.toBox.linescore.home_team_runs, "away":$scope.toBox.linescore.away_team_runs, "inning": "R"})
+      $scope.linescore.push({"home": $scope.toBox.linescore.home_team_hits, "away":$scope.toBox.linescore.away_team_hits, "inning": "H"})
+      $scope.linescore.push({"home": $scope.toBox.linescore.home_team_errors, "away":$scope.toBox.linescore.away_team_errors, "inning": "E"})
       $scope.loading = false;
     })
     .catch(function(error){
