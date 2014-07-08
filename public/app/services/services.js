@@ -23,9 +23,21 @@ angular.module('mygameday.services', [])
     })
   }
 
+  var getBox = function(gid){
+    return $http({ 
+      method: 'GET',
+      url: '/games/' + gid
+    })
+    .then(function(response){
+      console.log(response.data)
+      return response.data;
+    })  
+  }
+
   return{
     getGames: getGames,
-    getGame: getGame
+    getGame: getGame,
+    getBox: getBox
   };
 
 })

@@ -1,0 +1,15 @@
+<div id='container'>
+  <h2 ng-hide="loading">Plays by Inning<h2>
+  <h4 ng-show="loading">Loading, please wait.<h4>
+  <div ng-repeat="inning in data.events.data.game.inning">
+    <h2>{{ inning.num }}</h2>
+    <h4>Top</h4>
+    <ul ng-repeat="atbat in inning.top.atbat">
+      <li>{{ atbat.des }}</li>
+    </ul>
+    <h4>Bottom</h4>
+    <ul ng-repeat="atbat in inning.bottom.atbat">
+      <li>{{ atbat.des }}</li>
+    </ul>
+  </div>
+</div>

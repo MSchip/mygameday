@@ -1,6 +1,6 @@
 angular.module('mygameday.games', [])
 
-.controller('GamesController', function($scope, Games){
+.controller('GamesController', function($scope, $location, Games){
   $scope.data = {};
   $scope.loading = false;
 
@@ -16,15 +16,20 @@ angular.module('mygameday.games', [])
     })
   };
 
-  $scope.getGame = function(gid){
-    Games.getGame(gid)
-    .then(function(result){
-      console.log(result);
-    })
-    .catch(function(error){
-      console.log(error);
-    })
+  $scope.changeView = function(gid){
+    var url = '/game/'+gid;
+    $location.path(url);
   }
+
+  // $scope.getGame = function(gid){
+  //   Games.getGame(gid)
+  //   .then(function(result){
+  //     console.log(result);
+  //   })
+  //   .catch(function(error){
+  //     console.log(error);
+  //   })
+  // }
 
   $scope.getGames();
 });

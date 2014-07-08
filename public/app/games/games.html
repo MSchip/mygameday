@@ -2,6 +2,7 @@
   <h2 ng-hide="loading">Today's Games<h2>
   <h4 ng-show="loading">Loading, please wait.<h4>
   <div class="game-section" ng-repeat="game in data.games">
-    <h4><a ng-click='getGame(game[2])'>{{ game[0] }} at {{ game[1] }}</a></h4>
+    <h4><a ng-click="changeView(game[2])">{{ game[0] }} at {{ game[1] }}</a></h4>
+    <!-- <h4><a ng-click="getGame(game[2])">{{ game[0] }} at {{ game[1] }}</a></h4> -->
   </div>
 </div>
