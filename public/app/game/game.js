@@ -10,6 +10,11 @@ angular.module('mygameday.game', [])
     var url = '/game/'+gid+'/pitch';
     $location.path(url);
   }
+
+  $scope.changeBox = function(gid){
+    var url = '/game/'+gid+'/box';
+    $location.path(url);
+  }
   
   //play by play
   $scope.getGame = function(gid){

@@ -3,6 +3,7 @@ angular.module('mygameday', [
   'mygameday.games',
   'mygameday.game',
   'mygameday.pitch',
+  'mygameday.box',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider){
@@ -18,6 +19,10 @@ angular.module('mygameday', [
     .when('/game/:gid/pitch', {
       templateUrl: 'app/pitch/pitch.html',
       controller: 'PitchController'
+    })
+    .when('/game/:gid/box', {
+      templateUrl: 'app/box/box.html',
+      controller: 'BoxController'
     })
     // .otherwise({
     //   redirectTo: '/'
