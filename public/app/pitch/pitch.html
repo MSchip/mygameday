@@ -1,8 +1,33 @@
 <div id='game-container'>
   <h4 ng-show="loading">Loading, please wait.</h4>
-  <div>
+  <div class="links">
     <h2 class="linescore-head" ng-hide="loading">Pitch by Pitch</h2>
-    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Play by Play</a></h2>
-    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeView(data.gid)">Box Score</a></h2>
+    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeToPlay(data.gid)">Play by Play</a></h2>
+    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeToBox(data.gid)">Box Score</a></h2>
+  </div>
+  <div class="pitch-body" ng-hide="loading">
+    <table class='table table-bordered'>
+      <tr>
+        <th></th>
+        <th>R</th>
+        <th>H</th>
+        <th>E</th>
+      </tr>
+      <tr>
+        <td>Away</td>
+        <td>{{toGame.score.ar}}</td>
+        <td>{{toGame.score.ah}}</td>
+        <td>{{toGame.score.ae}}</td>
+      </tr>
+      <tr>
+        <td>Home</td>
+        <td>{{toGame.score.hr}}</td>
+        <td>{{toGame.score.hh}}</td>
+        <td>{{toGame.score.he}}</td>
+      </tr>
+    </table>
+  </div>
+    <h3>{{toGame.inning_state}} {{toGame.inning}}</h3>
+  <div>
   </div>
 </div>

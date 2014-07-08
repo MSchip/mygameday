@@ -2,8 +2,8 @@
   <h4 ng-show="loading">Loading, please wait.</h4>
   <div>
     <h2 class="linescore-head" ng-hide="loading">Box Score</h2>
-    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeToPlays(data.gid)">Play by Play</a></h2>
     <h2 class="pitch-link" ng-hide="loading || data.status_ind == 'F'"><a ng-click="changeView(data.gid)">Pitch by Pitch</a></h2>
+    <h2 class="pitch-link" ng-hide="loading"><a ng-click="changeToPlays(data.gid)">Play by Play</a></h2>
   </div>
   <div class="table-container" ng-hide="loading">
     <table class="inning-line-score table table-bordered col-md-8" ng-repeat="team in data.batters" ng-init="oldindex = $index">

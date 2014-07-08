@@ -51,7 +51,8 @@ module.exports = {
 
   getPlays: function(req, res, next){
     var gid = req.params.gid;
-    console.log('params: ', req.params)
+
+    var plays;
 
     var zeros = function(num) {
       num = num + '';
@@ -61,13 +62,22 @@ module.exports = {
     var dateMaker = function(date){
       return 'year_'+date.getFullYear()+'/month_'+zeros(date.getMonth()+1)+'/day_'+zeros(date.getDate());
     };
+
     var playsUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(utils.dater()) + '/' + gid + '/plays.json';
-    console.log(playsUrl)
+    var eventsUrl = 'http://gd2.mlb.com/components/game/mlb/' + dateMaker(utils.dater()) + '/' + gid + '/game_events.json';
+
     request.get(playsUrl, function(error, response, results) {
       if(error){
         console.log(error);
       } 
-      res.send(results);
+      plays = results;
+    });
+
+    request.get(eventsUrl, function(error, response, results) {
+      if(error){
+        console.log(error);
+      } 
+      res.send([results, plays]);
     });
 
   },
