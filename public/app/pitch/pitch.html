@@ -14,21 +14,21 @@
         <th>E</th>
       </tr>
       <tr>
-        <td>Away</td>
-        <td>{{toGame.score.ar}}</td>
-        <td>{{toGame.score.ah}}</td>
-        <td>{{toGame.score.ae}}</td>
-      </tr>
-      <tr>
-        <td>Home</td>
+        <td>{{ home }}</td>
         <td>{{toGame.score.hr}}</td>
         <td>{{toGame.score.hh}}</td>
         <td>{{toGame.score.he}}</td>
       </tr>
+      <tr>
+        <td>{{ away }}</td>
+        <td>{{toGame.score.ar}}</td>
+        <td>{{toGame.score.ah}}</td>
+        <td>{{toGame.score.ae}}</td>
+      </tr>
     </table>
   </div>
     <h3>{{toGame.inning_state}} {{toGame.inning}}</h3>
-  <div>
+  <div ng-hide="loading">
     <ul>
       <li ng-repeat="ab in toInning[toGame.inning-1][(toGame.inning_state).toLowerCase()].atbat">
         <!-- {{ toInning[toGame.inning-1][(toGame.inning_state).toLowerCase()].atbat }} -->
@@ -36,6 +36,7 @@
       </li>
     </ul>
     <ul>
+      <li><b>Current Batter: {{ toGame.players.batter.boxname }}</b></li>
       <li ng-repeat="pitch in toGame.atbat.p">
         {{ pitch.des }}
       </li>
