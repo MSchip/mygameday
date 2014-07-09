@@ -29,5 +29,16 @@
   </div>
     <h3>{{toGame.inning_state}} {{toGame.inning}}</h3>
   <div>
+    <ul>
+      <li ng-repeat="ab in toInning[toGame.inning-1][(toGame.inning_state).toLowerCase()].atbat">
+        <!-- {{ toInning[toGame.inning-1][(toGame.inning_state).toLowerCase()].atbat }} -->
+        {{ ab.des }}
+      </li>
+    </ul>
+    <ul>
+      <li ng-repeat="pitch in toGame.atbat.p">
+        {{ pitch.des }}
+      </li>
+    </ul>
   </div>
 </div>

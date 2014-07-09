@@ -24,6 +24,7 @@ angular.module('mygameday.pitch', [])
       $scope.data.events = JSON.parse(result[0]);
       console.log('plays: ', $scope.data.plays)
       console.log('events: ',$scope.data.events)
+      $scope.toInning = $scope.data.events.data.game.inning;
       $scope.toGame = $scope.data.plays.data.game;
       $scope.loading = false;
     })
